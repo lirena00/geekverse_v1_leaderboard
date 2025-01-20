@@ -16,21 +16,22 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = pgTableCreator((name) => `geekverse_v1_leaderboard_${name}`);
+export const createTable = pgTableCreator(
+  (name) => `geekverse_v1_leaderboard_${name}`,
+);
 
-export const posts = createTable(
-  "post",
+export const teams = createTable(
+  "team",
   {
     id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
-    name: varchar("name", { length: 256 }),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    updatedAt: timestamp("updated_at", { withTimezone: true }).$onUpdate(
-      () => new Date()
-    ),
+    name: varchar("name", { length: 256 }).notNull(), // Add notNull() for required field
+    round_one: integer("round_one").default(0), // Add default value
+    round_two: integer("round_two").default(0), // Add default value
+    bounty: integer("bounty").default(0), // Add default value
+    domain: varchar("domain", { length: 256 }).default("None"), // Add notNull() for required field
+    created_at: timestamp("created_at").defaultNow(), // Add timestamp for tracking
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
-  })
+  }),
 );
