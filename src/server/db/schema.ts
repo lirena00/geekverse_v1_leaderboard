@@ -24,12 +24,12 @@ export const teams = createTable(
   "team",
   {
     id: integer("id").primaryKey().generatedByDefaultAsIdentity(),
-    name: varchar("name", { length: 256 }).notNull(), // Add notNull() for required field
-    round_one: integer("round_one").default(0), // Add default value
-    round_two: integer("round_two").default(0), // Add default value
-    bounty: integer("bounty").default(0), // Add default value
-    domain: varchar("domain", { length: 256 }).default("None"), // Add notNull() for required field
-    created_at: timestamp("created_at").defaultNow(), // Add timestamp for tracking
+    name: varchar("name", { length: 256 }).notNull(),
+    round_one: integer("round_one").default(0),
+    round_two: integer("round_two").default(0),
+    bounty: integer("bounty").default(0),
+    domain: varchar("domain", { length: 256 }).default("None"),
+    created_at: timestamp("created_at").defaultNow(),
   },
   (example) => ({
     nameIndex: index("name_idx").on(example.name),
