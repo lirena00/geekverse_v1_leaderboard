@@ -1,5 +1,6 @@
 "use client";
 
+import { updatePoints } from "~/server/actions";
 import { useState, useTransition } from "react";
 import { Button } from "~/components/ui/button";
 import { Input } from "~/components/ui/input";
@@ -53,12 +54,14 @@ export function PointsForm({ teams }: { teams: { name: string }[] }) {
     setStatus("loading");
 
     startTransition(async () => {
-      const formData = new FormData();
-      formData.append("team", selectedTeam?.name ?? "");
-      formData.append("pointType", selectedPointType ?? "");
-      formData.append("points", points);
-      formData.append("comments", comments);
+      await updatePoints(
+        selectedTeam?.name ?? "",
+        selectedPointType ?? "",
+        Number(points),
+        comments,
+      );
     });
+    setStatus("success");
   };
 
   return (
@@ -77,7 +80,10 @@ export function PointsForm({ teams }: { teams: { name: string }[] }) {
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-full p-0">
+        <PopoverContent
+          className="w-full min-w-[var(--radix-popover-trigger-width)] p-0"
+          align="start"
+        >
           <Command>
             <CommandInput placeholder="Search team..." className="h-9" />
             <CommandList>
@@ -121,9 +127,11 @@ export function PointsForm({ teams }: { teams: { name: string }[] }) {
             <ChevronsUpDown className="opacity-50" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-full p-0">
+        <PopoverContent
+          className="w-full min-w-[var(--radix-popover-trigger-width)] p-0"
+          align="start"
+        >
           <Command>
-            <CommandInput placeholder="Search point type..." className="h-9" />
             <CommandList>
               <CommandEmpty>No point type found.</CommandEmpty>
               <CommandGroup>
@@ -169,13 +177,13 @@ export function PointsForm({ teams }: { teams: { name: string }[] }) {
       </Button>
 
       {status === "success" && (
-        <div className="flex items-center text-green-500">
-          <CheckCircle className="mr-2" /> Points updated!
+        <div className="flex items-center text-sm text-green-500">
+          <CheckCircle className="mr-2 h-4 w-4" /> Points updated!
         </div>
       )}
       {status === "error" && (
-        <div className="flex items-center text-red-500">
-          <XCircle className="mr-2" /> Failed to update.
+        <div className="flex items-center text-sm text-red-500">
+          <XCircle className="mr-2 h-4 w-4" /> Failed to update.
         </div>
       )}
     </form>

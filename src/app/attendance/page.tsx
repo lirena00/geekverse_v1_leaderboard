@@ -1,6 +1,6 @@
 import { getTeamsName } from "~/server/queries";
 import Header from "~/components/Header";
-import { DomainForm } from "~/components/forms-domain";
+import { DomainForm } from "~/components/form-domain";
 
 export default async function AttendancePage() {
   const teams = await getTeamsName();

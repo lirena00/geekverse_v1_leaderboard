@@ -1,16 +1,8 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { Button } from "~/components/ui/button";
-import { Input } from "~/components/ui/input";
-import { Textarea } from "~/components/ui/textarea";
-import {
-  Check,
-  ChevronsUpDown,
-  Loader,
-  CheckCircle,
-  XCircle,
-} from "lucide-react";
+import { Check, ChevronsUpDown } from "lucide-react";
 import {
   Popover,
   PopoverTrigger,
@@ -25,7 +17,7 @@ import {
   CommandList,
 } from "~/components/ui/command";
 import { cn } from "~/lib/utils";
-import updateDomain from "~/server/actions";
+import { updateDomain } from "~/server/actions";
 
 export function DomainForm({ teams }: { teams: { name: string }[] }) {
   const [loading, setLoading] = useState(false);
