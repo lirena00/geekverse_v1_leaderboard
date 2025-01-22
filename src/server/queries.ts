@@ -19,7 +19,7 @@ export async function getTeamsForLb() {
   const team_data = await db
     .select({
       id: teams.id,
-      rank: sql<number>`rank() over (order by (${teams.round_one} + ${teams.round_two} + ${teams.bounty}) desc)`.mapWith(
+      rank: sql<number>`rank() over (order by (${teams.round_one} + ${teams.round_two} + ${teams.round_three} + ${teams.bounty}) desc)`.mapWith(
         Number,
       ),
       num: sql<number>`row_number() over()`,
@@ -31,9 +31,10 @@ export async function getTeamsForLb() {
       domain: teams.domain,
       round_one: teams.round_one,
       round_two: teams.round_two,
+      round_three: teams.round_three,
       bounty: teams.bounty,
       total:
-        sql<number>`(${teams.round_one} + ${teams.round_two} + ${teams.bounty})`.mapWith(
+        sql<number>`(${teams.round_one} + ${teams.round_two} + ${teams.bounty} + ${teams.round_three})`.mapWith(
           Number,
         ),
     })

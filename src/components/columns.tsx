@@ -10,6 +10,7 @@ export type Team = {
   domain: string | null;
   round_one: number | null;
   round_two: number | null;
+  round_three: number | null;
   bounty: number | null;
   total: number | null;
 };
@@ -43,6 +44,11 @@ export const columns: ColumnDef<Team>[] = [
   {
     accessorKey: "round_two",
     header: "Round 2",
+    enableSorting: true,
+  },
+  {
+    accessorKey: "round_three",
+    header: "Round 3",
     enableSorting: true,
   },
   {

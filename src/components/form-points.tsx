@@ -30,6 +30,7 @@ import { cn } from "~/lib/utils";
 const pointTypes = [
   { key: "round_one", label: "Round 1" },
   { key: "round_two", label: "Round 2" },
+  { key: "round_three", label: "Round 3" },
   { key: "bounty", label: "Bounty" },
 ];
 

@@ -126,7 +126,7 @@ export function DataTable<TData, TValue>({
 
       {/* Table Component */}
       <div className="rounded-md border">
-        <Table>
+        <Table className="text-lg">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

@@ -26,6 +26,7 @@ export const teams = createTable(
     name: varchar("name", { length: 256 }).notNull(),
     round_one: integer("round_one").default(0),
     round_two: integer("round_two").default(0),
+    round_three: integer("round_three").default(0),
     bounty: integer("bounty").default(0),
     domain: varchar("domain", { length: 256 }).default("None"),
     comments: varchar("comments", { length: 256 }).default(""),
