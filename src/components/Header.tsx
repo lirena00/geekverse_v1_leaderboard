@@ -10,9 +10,11 @@ export default function Header() {
           </Link>
         </h1>
 
-        <nav className="flex gap-4">
+        <div className="flex gap-4">
           <Link href="/upload">Upload</Link>
-        </nav>
+          <Link href="/attendance">Attendance</Link>
+          <Link href="/dashboard">Points</Link>
+        </div>
       </header>
     </Card>
   );
