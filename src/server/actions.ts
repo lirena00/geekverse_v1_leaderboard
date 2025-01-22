@@ -13,6 +13,16 @@ export async function updateDomain(name: string, domain: string) {
     .where(eq(teams.name, name));
 }
 
+export async function createTeams(name: string) {
+  const team = await db.query.teams.findFirst({
+    where: (team, { eq }) => eq(team.name, name),
+  });
+  if (!team) {
+    await db.insert(teams).values({
+      name: name,
+    });
+  }
+}
 export async function updatePoints(
   name: string,
   pointType: string,

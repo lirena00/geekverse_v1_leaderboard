@@ -15,6 +15,7 @@ import {
 } from "~/components/ui/form";
 import { Textarea } from "~/components/ui/textarea";
 import Header from "~/components/Header";
+import { createTeams } from "~/server/actions";
 
 // Define schema for validation
 const formSchema = z.object({
