@@ -32,7 +32,8 @@ export async function updatePoints(
   await db
     .update(teams)
     .set({
-      [pointType]: points,
+      [pointType]:
+        pointType === "bounty" ? sql`${teams[pointType]} + ${points}` : points,
       comments: sql`${teams.comments} || ' ' || ${pointType} ||  ': '  || ${comments}`,
     })
     .where(eq(teams.name, name));
