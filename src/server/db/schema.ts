@@ -29,6 +29,7 @@ export const teams = createTable(
     round_two: integer("round_two").default(0),
     bounty: integer("bounty").default(0),
     domain: varchar("domain", { length: 256 }).default("None"),
+    comments: varchar("comments", { length: 256 }).default("None"),
     created_at: timestamp("created_at").defaultNow(),
   },
   (example) => ({

@@ -81,7 +81,7 @@ export default function UploadPage() {
               )}
             />
             <Button type="submit" disabled={loading}>
-              {loading ? "Adding..." : "Send message"}
+              {loading ? "Adding..." : "Upload Teams"}
             </Button>
           </form>
         </Form>

@@ -47,3 +47,11 @@ export async function getTeamsForLb() {
     );
   return team_data;
 }
+
+export async function getTeamsName() {
+  const team_data = await db
+    .select({ name: teams.name })
+    .from(teams)
+    .orderBy(asc(teams.name));
+  return team_data;
+}
