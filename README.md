@@ -4,6 +4,7 @@
 - [x] Shadcn Setup
 - [x] Drizzle Schema
 - [x] Header
-- [ ] Upload Page
-- [ ] Leaderboard Page
-- [ ] Points Page
+- [x] Upload Page
+- [x] Leaderboard Page
+- [x] Points Page
+- [x] Domain Registration Page
